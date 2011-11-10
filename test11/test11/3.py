@@ -18,14 +18,14 @@ for letter in text:
         letters_counts[letter] += 1
 sorted(letters_counts)
 
-print letters_counts
+#print letters_counts
 b = letters_counts.keys()
 
 b = list(letters_counts.items())
 b.sort(key=lambda item: item[1])
-
+b.reverse()
 for item in b:
-    print(item[0] +'=>'+ str(item[1]))
+    print(item[0] +''+ str(item[1])),
 
 #for key in sorted(letters_counts):
 #    print(key +'=>'+ str(letters_counts[key]))
