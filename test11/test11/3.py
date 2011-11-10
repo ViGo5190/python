@@ -1,4 +1,3 @@
 __author__ = 'vigo@vigo.su'
 
-q = input("chislo = ")
-print int(str(q)[::-1])
+print int(str(input("chislo = "))[::-1])
