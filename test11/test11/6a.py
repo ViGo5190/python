@@ -3,7 +3,7 @@ __author__ = 'vigo@vigo.su'
 # -*- coding: utf-8 -*-
 
 import re
-
+import copy
 def lev(word1, word2) :
     l1 = len(word1)
     l2 = len(word2)
@@ -17,6 +17,9 @@ def lev(word1, word2) :
                 table[zz+1][sz+1] = min(table[zz+1][sz] + 1, table[zz][sz+1] + 1, table[zz][sz])
             else :
                 table[zz+1][sz+1] = min(table[zz+1][sz] + 1, table[zz][sz+1] + 1, table[zz][sz] + 1)
+    print '!!!'
+    print table
+    print '!!'
     return table[l2][l1]
 
 
@@ -39,7 +42,8 @@ f.close()
 fuu +=2
 
 
-print lev(s1,s2)
+#print lev(s1,s2)
+#lev(s1,strs[3])
 
 levmatrix = []
 
@@ -57,31 +61,44 @@ for i in xrange(0,fuu,1):
 #print levmatrix
 words = []
 words.append([s1])
-print words[0]
+print words[0][0]
 
 for i in xrange(0,fuu,1):
+    for j in xrange(0,fuu,1):
+        print levmatrix[i][j],
+    print
+    
+check = True
+while check:
     tempwords = []
-    for j in xrange(i,fuu,1):
-        if levmatrix[i][j]==1:
-            
-            print '1'
 
-while True:
-    tempwords = []
     for lq in xrange(0,len(words),1):
+        #print '======',lq
+        check = False
         for i in xrange (0,len(strs),1):
-            #print strs[i], words[lq][len(words[lq])-1]
+            #print '----------',strs[i],' ',lq,' ',i,' ', words[lq][len(words[lq])-1]
             if strs[i]==words[lq][len(words[lq])-1]:
-                for j in xrange (i,len(strs),1):
+                for j in xrange (i+1,len(strs),1):
                     if levmatrix[i][j]==1:
-                        tempstr = words[lq]
+                        print '->>>>>',strs[i],' ',lq,' ',i,' ',j,' ', words[lq][len(words[lq])-1]
+                        tempstr = []
+                        tempstr = copy.deepcopy(words[lq])
                         tempstr.append(strs[j])
-                        levmatrix[i][j]=-1
+                        levmatrix[i][j]=0
                         tempwords.append(tempstr)
+                        check = True
+                        print '^^^^',tempwords
+                print '-<<<',words
+    #print 'rere'
+    if len(tempwords)>0:
+        words = copy.deepcopy(tempwords)
+    #print words
+    #for i in xrange(0,fuu,1):
+    #    for j in xrange(0,fuu,1):
+    #        print levmatrix[i][j],
+    #    print
+    check=False
 
-                #print 'rere'
-    words = tempwords
-    break
 
 for i in xrange(0,len(words),1):
     for j in xrange(0,len(words[i]),1):
