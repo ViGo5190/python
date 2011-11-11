@@ -36,7 +36,7 @@ for i in xrange(0,fuu,1):
     print '!',strs[i],'!'
 strs.append(s2)
 f.close()
-
+fuu +=2
 
 
 print lev(s1,s2)
@@ -56,7 +56,7 @@ for i in xrange(0,fuu,1):
 
 #print levmatrix
 words = []
-words.append(strs[0])
+words.append([s1])
 print words[0]
 
 for i in xrange(0,fuu,1):
@@ -70,8 +70,20 @@ while True:
     tempwords = []
     for lq in xrange(0,len(words),1):
         for i in xrange (0,len(strs),1):
-            print strs[i],
+            #print strs[i], words[lq][len(words[lq])-1]
             if strs[i]==words[lq][len(words[lq])-1]:
-                for j in 
-                print 'rere'
+                for j in xrange (i,len(strs),1):
+                    if levmatrix[i][j]==1:
+                        tempstr = words[lq]
+                        tempstr.append(strs[j])
+                        levmatrix[i][j]=-1
+                        tempwords.append(tempstr)
+
+                #print 'rere'
+    words = tempwords
     break
+
+for i in xrange(0,len(words),1):
+    for j in xrange(0,len(words[i]),1):
+        print words[i][j],
+    print
