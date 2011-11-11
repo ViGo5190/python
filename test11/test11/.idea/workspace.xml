@@ -53,7 +53,7 @@
       <file leaf-file-name="3.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="22" selection-start="619" selection-end="619" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="1" selection-end="24" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
       <file leaf-file-name="6.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="9" selection-start="740" selection-end="740" vertical-scroll-proportion="0.83576643">
+            <state line="74" column="8" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.94525546">
               <folding />
             </state>
           </provider>
@@ -71,7 +71,7 @@
       <file leaf-file-name="6.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/6.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="3" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0">
+            <state line="10" column="3" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -246,7 +246,9 @@
       <module name="test11" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/6.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -340,8 +342,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67211205" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32788798" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990665" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32788798" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -422,23 +424,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3.py">
+    <entry file="file://$PROJECT_DIR$/6.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="22" selection-start="619" selection-end="619" vertical-scroll-proportion="0.0">
+        <state line="10" column="3" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/6.txt">
+    <entry file="file://$PROJECT_DIR$/3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="1" selection-end="24" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="9" selection-start="740" selection-end="740" vertical-scroll-proportion="0.83576643">
+        <state line="74" column="8" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.94525546">
           <folding />
         </state>
       </provider>
