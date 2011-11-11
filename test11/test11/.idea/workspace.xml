@@ -71,7 +71,7 @@
       <file leaf-file-name="6a.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/6a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="12" selection-start="3315" selection-end="3315" vertical-scroll-proportion="3.4378586">
+            <state line="81" column="12" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.94263864">
               <folding />
             </state>
           </provider>
@@ -131,8 +131,8 @@
         <option value="$PROJECT_DIR$/6ф.py" />
         <option value="$PROJECT_DIR$/6.py" />
         <option value="$PROJECT_DIR$/6a.txt" />
-        <option value="$PROJECT_DIR$/6a.py" />
         <option value="$PROJECT_DIR$/6.txt" />
+        <option value="$PROJECT_DIR$/6a.py" />
       </list>
     </option>
   </component>
@@ -364,7 +364,7 @@
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67211205" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990665" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32788798" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32788798" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -475,7 +475,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/6a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="12" selection-start="3315" selection-end="3315" vertical-scroll-proportion="3.4378586">
+        <state line="81" column="12" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.94263864">
           <folding />
         </state>
       </provider>
