@@ -62,7 +62,7 @@
       <file leaf-file-name="6.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="8" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.94525546">
+            <state line="90" column="28" selection-start="2449" selection-end="2449" vertical-scroll-proportion="0.5620438">
               <folding />
             </state>
           </provider>
@@ -424,13 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/6.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="3" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="1" selection-end="24" vertical-scroll-proportion="0.0">
@@ -438,9 +431,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/6.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="3" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="8" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.94525546">
+        <state line="90" column="28" selection-start="2449" selection-end="2449" vertical-scroll-proportion="0.5620438">
           <folding />
         </state>
       </provider>

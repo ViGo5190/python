@@ -9,6 +9,8 @@ import re
 
 f = open('6.txt','r')
 s1 = f.readline()
+s1 = unicode(s1,'utf-8')
+print s1
 s2 = f.readline()
 fuu = int(f.readline());
 print fuu
@@ -51,10 +53,11 @@ while True:
         find = False
 
 
-        tempregexp = '[а-я]?'+tempstr[::]
+        tempregexp = '\w?'+tempstr[::]
         tempregexp = tempregexp.strip()
         ptemp = re.compile(tempregexp, re.IGNORECASE)
-
+        print '-'
+        print tempregexp
         valToDel = []
         for j in xrange(0,len(strs),1):
             #print strs[j] + ' !' + tempregexp+'! '
@@ -66,16 +69,45 @@ while True:
                 qwe.append(strs[j])
                 tempwords.append(qwe)
                 valToDel.append(strs[j])
-
+        print '+'
         for regi in xrange(2,len(tempstr),2):
             regimin = (-1)*len(tempstr) + regi
-            tempregexp = tempstr[:regimin:]+'[а-я]?'+tempstr[regi::]
+            tempregexp = tempstr[:regimin:]+'\w?'+tempstr[regi::]
             tempregexp = tempregexp.strip()
             ptemp = re.compile(tempregexp, re.IGNORECASE)
-        
+            print '-'
+            print tempregexp
+            for j in xrange(0,len(strs),1):
+                #print strs[j] + ' !' + tempregexp+'! '
+                regtemp = ptemp.search(strs[j], re.U | re.I | re.M)
+                if regtemp:
+                    print regtemp.group(),' ',regtemp.span(),' ',strs[j]
+                    find = True
+                    qwe = words[i]
+                    qwe.append(strs[j])
+                    tempwords.append(qwe)
+                    valToDel.append(strs[j])
+        print '-?'
+        for regi in xrange(2,len(tempstr),2):
+            regimin = (-1)*len(tempstr) + regi
+            tempregexp = tempstr[:regimin-2:]+'\w?'+tempstr[regi::]
+            tempregexp = tempregexp.strip()
+            ptemp = re.compile(tempregexp, re.IGNORECASE)
+            print '-'
+            print tempregexp
+            for j in xrange(0,len(strs),1):
+                #print strs[j] + ' !' + tempregexp+'! '
+                regtemp = ptemp.search(strs[j],re.U | re.I | re.M)
+                if regtemp:
+                    print regtemp.group(),' ',regtemp.span(),' ',strs[j]
+                    find = True
+                    qwe = words[i]
+                    qwe.append(strs[j])
+                    tempwords.append(qwe)
+                    valToDel.append(strs[j])
 
-        for dell in xrange(0,len(valToDel),1):
-            strs.remove(valToDel[i])
+        for delli in xrange(0,len(valToDel),1):
+            strs.remove(valToDel[delli])
 
 
 
