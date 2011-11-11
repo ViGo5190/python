@@ -17,24 +17,24 @@ def lev(word1, word2) :
                 table[zz+1][sz+1] = min(table[zz+1][sz] + 1, table[zz][sz+1] + 1, table[zz][sz])
             else :
                 table[zz+1][sz+1] = min(table[zz+1][sz] + 1, table[zz][sz+1] + 1, table[zz][sz] + 1)
-    print '!!!'
-    print table
-    print '!!'
+    #print '!!!'
+    #print table
+    #print '!!'
     return table[l2][l1]
 
 
 
 f = open('6.txt','r')
-s1 = f.readline().strip()
+s1 = unicode(f.readline().strip(), 'utf-8')
 
 print s1
-s2 = f.readline().strip()
+s2 = unicode(f.readline().strip(), 'utf-8')
 fuu = int(f.readline());
 print fuu
 strs = []
 strs.append(s1)
 for i in xrange(0,fuu,1):
-    ss = f.readline().strip()
+    ss = unicode(f.readline().strip(), 'utf-8')
     strs.append(ss)
     print '!',strs[i],'!'
 strs.append(s2)
@@ -43,7 +43,9 @@ fuu +=2
 
 
 #print lev(s1,s2)
-#lev(s1,strs[3])
+print len(s1), '1',len(strs[2])
+print lev(s1,strs[2])
+print '--------------------------------------------------------'
 
 levmatrix = []
 
@@ -69,8 +71,9 @@ for i in xrange(0,fuu,1):
     print
     
 check = True
+allfinish = False
 while check:
-    tempwords = []
+    tempwords = copy.deepcopy(words)
 
     for lq in xrange(0,len(words),1):
         #print '======',lq
@@ -80,6 +83,8 @@ while check:
             if strs[i]==words[lq][len(words[lq])-1]:
                 for j in xrange (i+1,len(strs),1):
                     if levmatrix[i][j]==1:
+                        if strs[i]==s2:
+                            allfinish = True
                         print '->>>>>',strs[i],' ',lq,' ',i,' ',j,' ', words[lq][len(words[lq])-1]
                         tempstr = []
                         tempstr = copy.deepcopy(words[lq])
@@ -97,10 +102,12 @@ while check:
     #    for j in xrange(0,fuu,1):
     #        print levmatrix[i][j],
     #    print
-    check=False
+    #check=False
 
-
+print '---'
 for i in xrange(0,len(words),1):
-    for j in xrange(0,len(words[i]),1):
-        print words[i][j],
+    if True:
+        #print 'qwe'
+        for j in xrange(0,len(words[i]),1):
+            print words[i][j],
     print
