@@ -8,15 +8,17 @@ import re
 #    print reg.group(),' ',reg.span()
 
 f = open('6.txt','r')
-s1 = f.readline()
-s1 = unicode(s1,'utf-8')
+s1 = f.readline().strip()
+s1 = unicode(s1,'utf-8').encode('utf-8')
 print s1
 s2 = f.readline()
+s2 = unicode(s2,'utf-8').encode('utf-8')
 fuu = int(f.readline());
 print fuu
 strs = []
 for i in xrange(0,fuu,1):
     ss = f.readline().strip()
+    ss = unicode(ss, 'utf-8').encode('utf-8')
     strs.append(ss)
     print '!',strs[i],'!'
     
@@ -72,14 +74,14 @@ while True:
         print '+'
         for regi in xrange(2,len(tempstr),2):
             regimin = (-1)*len(tempstr) + regi
-            tempregexp = tempstr[:regimin:]+'\w?'+tempstr[regi::]
+            tempregexp = tempstr[:regimin:]+'\w'+tempstr[regi::]
             tempregexp = tempregexp.strip()
             ptemp = re.compile(tempregexp, re.IGNORECASE)
             print '-'
             print tempregexp
             for j in xrange(0,len(strs),1):
                 #print strs[j] + ' !' + tempregexp+'! '
-                regtemp = ptemp.search(strs[j], re.U | re.I | re.M)
+                regtemp = ptemp.search(strs[j])
                 if regtemp:
                     print regtemp.group(),' ',regtemp.span(),' ',strs[j]
                     find = True
@@ -90,14 +92,15 @@ while True:
         print '-?'
         for regi in xrange(2,len(tempstr),2):
             regimin = (-1)*len(tempstr) + regi
-            tempregexp = tempstr[:regimin-2:]+'\w?'+tempstr[regi::]
+            tempregexp = tempstr[:regimin-2:]+"\w"+tempstr[regi::]
             tempregexp = tempregexp.strip()
             ptemp = re.compile(tempregexp, re.IGNORECASE)
             print '-'
-            print tempregexp
+            print [tempregexp]
             for j in xrange(0,len(strs),1):
                 #print strs[j] + ' !' + tempregexp+'! '
-                regtemp = ptemp.search(strs[j],re.U | re.I | re.M)
+                regtemp = ptemp.search(strs[j])
+                #print '-----------------',strs[j]
                 if regtemp:
                     print regtemp.group(),' ',regtemp.span(),' ',strs[j]
                     find = True
