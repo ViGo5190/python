@@ -38,6 +38,7 @@ showMatrix()
 
 
 def vod(q,w,li,o):
+    nextStep =False
     if len(matrix[q][w])==0:
         #rows = []
         #rows = copy.deepcopy(matrix[q][w])
@@ -45,11 +46,14 @@ def vod(q,w,li,o):
         li.append([q,w,o])
         matrix[q][w] = copy.deepcopy(li)
         #matrix[q][w] = copy.deepcopy(rows)
+        nextStep = True
     if len(matrix[q][w])>len(li):
         matrix[q][w] = matrix[q][w] + li
+        nextStep = True
     listToSend = copy.deepcopy(matrix[q][w])
-    print listToSend
+
     print '---'
+    print listToSend
     showMatrix()
 
 
@@ -59,10 +63,10 @@ def vod(q,w,li,o):
     #    vod(5,0,listToSend,1)
 
     #1 >a
-    if q!=a:
+    if nextStep:
         vod(a,w,listToSend,1)
     #2 >b
-    if w!=b:
+    if nextStep:
         vod(q,b,listToSend,2)
     #3 a>b
     if q+w >= b:
@@ -71,8 +75,8 @@ def vod(q,w,li,o):
     if q+w <= b:
         tow = q+w
         toq = 0
-    if toq!=q or tow!=w:
-    vod(toq,tow,listToSend,3)
+    if nextStep:
+        vod(toq,tow,listToSend,3)
 
     #4 b>a
     if q+w >= a:
@@ -81,8 +85,15 @@ def vod(q,w,li,o):
     if q+w <= a:
         tow = 0
         toq = q+w
-    if toq!=q or tow!=w:
-    vod(toq,tow,listToSend,4)
+    if nextStep:
+        vod(toq,tow,listToSend,4)
+    #5 a>
+    if nextStep:
+        vod(0,w,listToSend,5)
+    #6 b>
+    if nextStep:
+        vod(q,0,listToSend,6)
+
     #isRun = False
 
 
