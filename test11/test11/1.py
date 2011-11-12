@@ -10,7 +10,7 @@ a=5
 b=8
 n=3
 
-matrix = []
+qmatrix = []
 for i in xrange(0,a+1,1):
     row = []
     for j in xrange(0,b+1,1):
@@ -18,9 +18,10 @@ for i in xrange(0,a+1,1):
         row.append(col)
     
     
-    matrix.append(row)
+    qmatrix.append(row)
 
-def showMatrix():
+def showMatrix(qwe):
+    matrix = copy.deepcopy(qwe)
     for i in xrange(0,len(matrix),1):
         for j in xrange(0,len(matrix[i]),1):
             #print matrix[i][j], '| ',
@@ -30,14 +31,15 @@ def showMatrix():
                 print '0 |',
         print
 
-showMatrix()
+showMatrix(qmatrix)
 
 #isRun = True
 
 #while isRun:
 
 
-def vod(q,w,li,o):
+def vod(q,w,li,o,myqwe):
+    matrix = copy.deepcopy(myqwe)
     nextStep =False
     if len(matrix[q][w])==0:
         #rows = []
@@ -54,7 +56,7 @@ def vod(q,w,li,o):
 
     print '---'
     print listToSend
-    showMatrix()
+    showMatrix(matrix)
 
 
 
@@ -64,10 +66,10 @@ def vod(q,w,li,o):
 
     #1 >a
     if nextStep:
-        vod(a,w,listToSend,1)
+        vod(a,w,listToSend,1,matrix)
     #2 >b
     if nextStep:
-        vod(q,b,listToSend,2)
+        vod(q,b,listToSend,2,matrix)
     #3 a>b
     if q+w >= b:
         tow = b
@@ -76,7 +78,7 @@ def vod(q,w,li,o):
         tow = q+w
         toq = 0
     if nextStep:
-        vod(toq,tow,listToSend,3)
+        vod(toq,tow,listToSend,3,matrix)
 
     #4 b>a
     if q+w >= a:
@@ -86,18 +88,18 @@ def vod(q,w,li,o):
         tow = 0
         toq = q+w
     if nextStep:
-        vod(toq,tow,listToSend,4)
+        vod(toq,tow,listToSend,4,matrix)
     #5 a>
     if nextStep:
-        vod(0,w,listToSend,5)
+        vod(0,w,listToSend,5,matrix)
     #6 b>
     if nextStep:
-        vod(q,0,listToSend,6)
+        vod(q,0,listToSend,6,matrix)
 
     #isRun = False
 
 
-vod(0,0,[[-1,-1]],0)
+vod(0,0,[[-1,-1]],0,qmatrix)
 
 
   
