@@ -26,7 +26,7 @@
       <file leaf-file-name="1.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="423" selection-end="423" vertical-scroll-proportion="0.7810219">
+            <state line="73" column="24" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.6167883">
               <folding />
             </state>
           </provider>
@@ -71,7 +71,7 @@
       <file leaf-file-name="6a.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/6a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="12" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.0">
+            <state line="5" column="1" selection-start="65" selection-end="75" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -438,13 +438,6 @@
         <state line="12" column="8" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/6a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="12" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/6.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="3" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" />
@@ -465,9 +458,16 @@
         <state line="1" column="16" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/6a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="1" selection-start="65" selection-end="75" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="423" selection-end="423" vertical-scroll-proportion="0.7810219">
+        <state line="73" column="24" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.6167883">
           <folding />
         </state>
       </provider>
