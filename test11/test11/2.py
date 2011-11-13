@@ -49,24 +49,27 @@ def showMatrix(qwe):
 matrix = copy.deepcopy(qmatrix)
 
 
-def voda(qn,wn,li,o):
-    #print qn,wn
-    q=0
-    w=0
-    qs=0
-    ws=0
-    if qn%a == 0 and qn!=0:
-        q=a
-        qs=qn/a-1
-    else:
-        q=qn%(a)
-        qs=qn/a
-    if wn%b ==0 and wn!=0:
-        w=b
-        ws=wn/b-1
-    else:
-        w=wn%b
-        ws=wn/b
+def voda(q,qs,w,ws,li,o):
+
+    #q=0
+    #w=0
+    #qs=0
+    #ws=0
+    qn=q+qs*a
+    wn=w+ws*b
+    print q, qn,w, wn ,'li', o ,qs,ws
+    #if qn%a == 0 and qn!=0:
+    #    q=a
+    #    qs=qn/a-1
+    #else:
+    #    q=qn%(a)
+    #    qs=qn/a
+    #if wn%b ==0 and wn!=0:
+    #    w=b
+    #    ws=wn/b-1
+    #else:
+    #    w=wn%b
+    #    ws=wn/b
 
     liq= copy.deepcopy(li)
     listToSend = []
@@ -83,11 +86,11 @@ def voda(qn,wn,li,o):
     listToSend = copy.deepcopy(matrix[qn][wn])
 
     #1 >a
-    if nextStep and q!=a:
-        voda(a+ a*qs,w+b*ws,listToSend,1)
+    if nextStep and q!=a :
+        voda(a, qs,w,ws,listToSend,1)
     #2 >b
     if nextStep and w!=b:
-        voda(q+a*qs,b+b*ws,listToSend,2)
+        voda(q,qs,b,ws,listToSend,2)
     #3 a>b
     if q!=0 and w<b:
         toq = 0
@@ -101,7 +104,7 @@ def voda(qn,wn,li,o):
 
         if nextStep and (q+w)!=b:
             #print toq,tow
-            voda(toq+a*qs,tow+b*ws,listToSend,3)
+            voda(toq,qs,tow,ws,listToSend,3)
 
     #4 b>a
     if w!=0 and q<a:
@@ -114,21 +117,21 @@ def voda(qn,wn,li,o):
             toww = 0
             toqq = q+w
         if nextStep and (q+w)!=a:
-            voda(toqq+a*qs,toww+b*ws,listToSend,4)
+            voda(toqq,qs,toww,ws,listToSend,4)
     #5 a>
     if nextStep and q>0:
-        voda(qs*a,w+b*ws,listToSend,5)
+        voda(0,qs,w,ws,listToSend,5)
     #6 b>
     if nextStep and w>0:
-        voda(q+a*qs,ws*b,listToSend,6)
+        voda(q,qs,0,ws,listToSend,6)
     #7 a>c
-    if nextStep and q>0 and (qs+1)*a<an:
-        voda(a*(qs+1)+1,w+b*ws,listToSend,7)
+    if nextStep and q>0 and ((qs+1)*a)<=an:
+        voda(0,qs+1,w,ws,listToSend,7)
     #8 b>c
-    if nextStep and w>0 and (ws+1)*b<bn:
-        voda(q+a*qs,(ws+1)*b+1,listToSend,8)
+    if nextStep and w>0 and ((ws+1)*b)<=bn:
+        voda(q,qs,0,(ws+1),listToSend,8)
 
-voda(0,0,[[-1,-1]],0)
+voda(0,0,0,0,[[-1,-1]],0)
 
 flag=-1
 flagList=[]
