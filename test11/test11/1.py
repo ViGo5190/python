@@ -6,9 +6,9 @@ import copy
 #b = input("B")
 #n = input("N")
 
-a=5
-b=8
-n=3
+a=3
+b=5
+n=1
 
 qmatrix = []
 for i in xrange(0,a+1,1):
@@ -25,13 +25,14 @@ def showMatrix(qwe):
     for i in xrange(0,len(matrix),1):
         for j in xrange(0,len(matrix[i]),1):
             #print matrix[i][j], '| ',
-            if len(matrix[i][j])>0:
-                print '1 |',
-            else:
-                print '0 |',
+            print len(matrix[i][j]),' |',
+            #if len(matrix[i][j])>0:
+            #    print '1 |',
+            #else:
+            #    print '0 |',
         print
 
-showMatrix(qmatrix)
+#showMatrix(qmatrix)
 
 #isRun = True
 
@@ -99,7 +100,122 @@ def vod(q,w,li,o,myqwe):
     #isRun = False
 
 
-vod(0,0,[[-1,-1]],0,qmatrix)
+#vod(0,0,[[-1,-1]],0,qmatrix)
 
+matrix = copy.deepcopy(qmatrix)
+
+
+def voda(q,w,li,o):
+    
+    nextStep =False
+    if len(matrix[q][w])==0:
+        #rows = []
+        #rows = copy.deepcopy(matrix[q][w])
+        #rows.append(li)
+        li.append([q,w,o])
+        matrix[q][w] = copy.deepcopy(li)
+        #matrix[q][w] = copy.deepcopy(rows)
+        nextStep = True
+    elif len(matrix[q][w])>len(li):
+        li.append([q,w,o])
+        matrix[q][w] = copy.deepcopy(li)
+        nextStep = True
+    listToSend = copy.deepcopy(matrix[q][w])
+
+
+    #print '---'
+    #print listToSend
+    #showMatrix(matrix)
+    #if not nextStep:
+    #    print 'STOP'
+
+
+    #if q!=5 :
+    #    print "start"
+    #    vod(5,0,listToSend,1)
+
+    #1 >a
+    if nextStep:
+        voda(a,w,listToSend,1)
+    #2 >b
+    if nextStep:
+        voda(q,b,listToSend,2)
+    #3 a>b
+    toq =0
+    tow =0
+    if q+w >= b:
+        tow = b
+        toq = q+w-b
+    elif q+w < b:
+        tow = q+w
+        toq = 0
+    if nextStep:
+        voda(toq,tow,listToSend,3)
+
+    #4 b>a
+    toqq =0
+    toww =0
+    if q+w >= a:
+        toww = q+w-a
+        toqq = a
+    elif q+w < a:
+        toww = 0
+        toqq = q+w
+    if nextStep :
+        voda(toqq,toww,listToSend,4)
+    #5 a>
+    if nextStep:
+        voda(0,w,listToSend,5)
+    #6 b>
+    if nextStep:
+        voda(q,0,listToSend,6)
+
+    #isRun = False
+voda(0,0,[[-1,-1]],0)
+
+showMatrix(matrix)
+
+flag=-1
+glagList=[]
+if n<=a:
+    for i in xrange(0,len(matrix[0]),1):
+        if (len(matrix[n][i])<flag or flag==-1) and len(matrix[n][i])!=0:
+            flag = len(matrix[n][i])
+            flagList = copy.deepcopy(matrix[n][i])
+if n<=b:
+    for i in xrange(0,len(matrix),1):
+        if (len(matrix[i][n])<flag or flag==-1) and len(matrix[n][i])!=0:
+            flag = len(matrix[i][n])
+            flagList = copy.deepcopy(matrix[i][n])
+print flag
+print flagList
+if len(flagList)>2:
+    for i in xrange(2,len(flagList),1):
+        if flagList[i][2] == 1:
+            print '>a'
+        if flagList[i][2] == 2:
+            print '>b'
+        if flagList[i][2] == 3:
+            print 'a>b'
+        if flagList[i][2] == 4:
+            print 'b>a'
+        if flagList[i][2] == 5:
+            print 'a>'
+        if flagList[i][2] == 6:
+            print 'b>'
+
+#isDo = True
+
+
+#while isDo:
+#    for i in xrange(0,len(matrix),1):
+#        for j in xrange(0,len(matrix[i]),1):
+#            if True:
+#                print 1
+#    isDo=false
+
+
+
+#showMatrix(matrix)
 
   
