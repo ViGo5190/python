@@ -106,16 +106,16 @@ matrix = copy.deepcopy(qmatrix)
 
 
 def voda(q,w,li,o):
-    
+    liq= copy.deepcopy(li)
     listToSend = []
     nextStep =False
     if len(matrix[q][w])==0:
-        li.append([q,w,o])
-        matrix[q][w] = copy.deepcopy(li)
+        liq.append([q,w,o])
+        matrix[q][w] = copy.deepcopy(liq)
         nextStep = True
-    if len(matrix[q][w])>len(li):
-        li.append([q,w,o])
-        matrix[q][w] = copy.deepcopy(li)
+    elif len(matrix[q][w])>len(li):
+        liq.append([q,w,o])
+        matrix[q][w] = copy.deepcopy(liq)
         nextStep = True
         
     listToSend = copy.deepcopy(matrix[q][w])
@@ -142,8 +142,8 @@ def voda(q,w,li,o):
     if q!=0 and w<b:
         toq = 0
         tow = 0
-        print '--'
-        print toq,tow,q,w,a,b
+        #print '--'
+        #print toq,tow,q,w,a,b
         if (q+w) >= b:
             tow = b
             toq = q+w-b
@@ -182,22 +182,22 @@ showMatrix(matrix)
 flag=-1
 flagList=[]
 
-print '====='
+#print '====='
 
 if n<=a:
     for i in xrange(0,len(matrix[0]),1):
         if (len(matrix[n][i])<flag or flag==-1) and len(matrix[n][i])!=0:
             flag = len(matrix[n][i])
-            print flag,'a'
+            #print flag,'a'
             flagList = copy.deepcopy(matrix[n][i])
 if n<=b:
     print 'len=', len(matrix)
     for i in xrange(0,len(matrix),1):
         if (len(matrix[i][n])<flag or flag==-1) and len(matrix[i][n])!=0:
-            print flag,'b'
+            #print flag,'b'
             flag = len(matrix[i][n])
             flagList = copy.deepcopy(matrix[i][n])
-print '====='
+#print '====='
 print flag
 print flagList
 if len(flagList)>2:
