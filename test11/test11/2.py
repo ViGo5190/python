@@ -70,16 +70,16 @@ def voda(qn,wn,li,o):
     liq= copy.deepcopy(li)
     listToSend = []
     nextStep =False
-    if len(matrix[q][w])==0:
+    if len(matrix[qn][wn])==0:
         liq.append([q,w,o])
-        matrix[q][w] = copy.deepcopy(liq)
+        matrix[qn][wn] = copy.deepcopy(liq)
         nextStep = True
-    elif len(matrix[q][w])>len(li):
+    elif len(matrix[qn][wn])>len(li):
         liq.append([q,w,o])
-        matrix[q][w] = copy.deepcopy(liq)
+        matrix[qn][wn] = copy.deepcopy(liq)
         nextStep = True
         
-    listToSend = copy.deepcopy(matrix[q][w])
+    listToSend = copy.deepcopy(matrix[qn][wn])
 
     #1 >a
     if nextStep and q!=a:
@@ -121,7 +121,7 @@ def voda(qn,wn,li,o):
     if nextStep and w>0:
         voda(q+a*qs,ws*b,listToSend,6)
     #7 a>c
-    if nextStep and w>0:
+    if nextStep and q>0:
         voda(a*(qs+1),w+b*ws,listToSend,7)
     #8 b>c
     if nextStep and w>0:
