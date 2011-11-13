@@ -107,19 +107,17 @@ matrix = copy.deepcopy(qmatrix)
 
 def voda(q,w,li,o):
     
+    listToSend = []
     nextStep =False
     if len(matrix[q][w])==0:
-        #rows = []
-        #rows = copy.deepcopy(matrix[q][w])
-        #rows.append(li)
-        li.append([q,w,o])
-        matrix[q][w] = copy.deepcopy(li)
-        #matrix[q][w] = copy.deepcopy(rows)
-        nextStep = True
-    elif len(matrix[q][w])>len(li):
         li.append([q,w,o])
         matrix[q][w] = copy.deepcopy(li)
         nextStep = True
+    if len(matrix[q][w])>len(li):
+        li.append([q,w,o])
+        matrix[q][w] = copy.deepcopy(li)
+        nextStep = True
+        
     listToSend = copy.deepcopy(matrix[q][w])
 
 
@@ -135,39 +133,45 @@ def voda(q,w,li,o):
     #    vod(5,0,listToSend,1)
 
     #1 >a
-    if nextStep:
+    if nextStep and q!=a:
         voda(a,w,listToSend,1)
     #2 >b
-    if nextStep:
+    if nextStep and w!=b:
         voda(q,b,listToSend,2)
     #3 a>b
-    toq =0
-    tow =0
-    if q+w >= b:
-        tow = b
-        toq = q+w-b
-    elif q+w < b:
-        tow = q+w
+    if q!=0 and w<b:
         toq = 0
-    if nextStep:
-        voda(toq,tow,listToSend,3)
+        tow = 0
+        print '--'
+        print toq,tow,q,w,a,b
+        if (q+w) >= b:
+            tow = b
+            toq = q+w-b
+        else:
+            tow = q+w
+            toq = 0
+
+        if nextStep and (q+w)!=b:
+            print toq,tow
+            voda(toq,tow,listToSend,3)
 
     #4 b>a
-    toqq =0
-    toww =0
-    if q+w >= a:
-        toww = q+w-a
-        toqq = a
-    elif q+w < a:
+    if w!=0 and q<a:
+        toqq = 0
         toww = 0
-        toqq = q+w
-    if nextStep :
-        voda(toqq,toww,listToSend,4)
+        if (q+w) >= a:
+            toww = q+w-a
+            toqq = a
+        else:
+            toww = 0
+            toqq = q+w
+        if nextStep and (q+w)!=a:
+            voda(toqq,toww,listToSend,4)
     #5 a>
-    if nextStep:
+    if nextStep and q>0:
         voda(0,w,listToSend,5)
     #6 b>
-    if nextStep:
+    if nextStep and w>0:
         voda(q,0,listToSend,6)
 
     #isRun = False
@@ -176,17 +180,24 @@ voda(0,0,[[-1,-1]],0)
 showMatrix(matrix)
 
 flag=-1
-glagList=[]
+flagList=[]
+
+print '====='
+
 if n<=a:
     for i in xrange(0,len(matrix[0]),1):
         if (len(matrix[n][i])<flag or flag==-1) and len(matrix[n][i])!=0:
             flag = len(matrix[n][i])
+            print flag,'a'
             flagList = copy.deepcopy(matrix[n][i])
 if n<=b:
+    print 'len=', len(matrix)
     for i in xrange(0,len(matrix),1):
-        if (len(matrix[i][n])<flag or flag==-1) and len(matrix[n][i])!=0:
+        if (len(matrix[i][n])<flag or flag==-1) and len(matrix[i][n])!=0:
+            print flag,'b'
             flag = len(matrix[i][n])
             flagList = copy.deepcopy(matrix[i][n])
+print '====='
 print flag
 print flagList
 if len(flagList)>2:
@@ -206,6 +217,7 @@ if len(flagList)>2:
 
 #isDo = True
 
+print matrix[0][1]
 
 #while isDo:
 #    for i in xrange(0,len(matrix),1):
