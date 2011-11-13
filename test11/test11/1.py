@@ -6,9 +6,9 @@ import copy
 #b = input("B")
 #n = input("N")
 
-a=3
+a=8
 b=5
-n=1
+n=2
 
 qmatrix = []
 for i in xrange(0,a+1,1):
@@ -152,7 +152,7 @@ def voda(q,w,li,o):
             toq = 0
 
         if nextStep and (q+w)!=b:
-            print toq,tow
+            #print toq,tow
             voda(toq,tow,listToSend,3)
 
     #4 b>a
@@ -177,7 +177,7 @@ def voda(q,w,li,o):
     #isRun = False
 voda(0,0,[[-1,-1]],0)
 
-showMatrix(matrix)
+#showMatrix(matrix)
 
 flag=-1
 flagList=[]
@@ -191,15 +191,15 @@ if n<=a:
             #print flag,'a'
             flagList = copy.deepcopy(matrix[n][i])
 if n<=b:
-    print 'len=', len(matrix)
+   # print 'len=', len(matrix)
     for i in xrange(0,len(matrix),1):
         if (len(matrix[i][n])<flag or flag==-1) and len(matrix[i][n])!=0:
             #print flag,'b'
             flag = len(matrix[i][n])
             flagList = copy.deepcopy(matrix[i][n])
 #print '====='
-print flag
-print flagList
+#print flag
+#print flagList
 if len(flagList)>2:
     for i in xrange(2,len(flagList),1):
         if flagList[i][2] == 1:
@@ -214,10 +214,11 @@ if len(flagList)>2:
             print 'a>'
         if flagList[i][2] == 6:
             print 'b>'
-
+else:
+    print 'Impossible'
 #isDo = True
 
-print matrix[0][1]
+#print matrix[0][1]
 
 #while isDo:
 #    for i in xrange(0,len(matrix),1):
