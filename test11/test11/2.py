@@ -50,6 +50,7 @@ matrix = copy.deepcopy(qmatrix)
 
 
 def voda(qn,wn,li,o):
+    #print qn,wn
     q=0
     w=0
     qs=0
@@ -121,11 +122,11 @@ def voda(qn,wn,li,o):
     if nextStep and w>0:
         voda(q+a*qs,ws*b,listToSend,6)
     #7 a>c
-    if nextStep and q>0:
-        voda(a*(qs+1),w+b*ws,listToSend,7)
+    if nextStep and q>0 and (qs+1)*a<an:
+        voda(a*(qs+1)+1,w+b*ws,listToSend,7)
     #8 b>c
-    if nextStep and w>0:
-        voda(q+a*qs,(ws+1)*b,listToSend,8)
+    if nextStep and w>0 and (ws+1)*b<bn:
+        voda(q+a*qs,(ws+1)*b+1,listToSend,8)
 
 voda(0,0,[[-1,-1]],0)
 
@@ -134,17 +135,18 @@ flagList=[]
 
 showMatrix(matrix)
 
-if n<=a:
+if n<=an:
     for i in xrange(0,len(matrix[0]),1):
         if (len(matrix[n][i])<flag or flag==-1) and len(matrix[n][i])!=0:
             flag = len(matrix[n][i])
             flagList = copy.deepcopy(matrix[n][i])
-if n<=b:
+if n<=bn:
     for i in xrange(0,len(matrix),1):
         if (len(matrix[i][n])<flag or flag==-1) and len(matrix[i][n])!=0:
             flag = len(matrix[i][n])
             flagList = copy.deepcopy(matrix[i][n])
-
+print flag
+print flagList
 if len(flagList)>2:
     for i in xrange(2,len(flagList),1):
         if flagList[i][2] == 1:
