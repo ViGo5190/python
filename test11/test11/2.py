@@ -52,14 +52,20 @@ matrix = copy.deepcopy(qmatrix)
 def voda(qn,wn,li,o):
     q=0
     w=0
+    qs=0
+    ws=0
     if qn%a == 0 and qn!=0:
         q=a
+        qs=qn/a-1
     else:
         q=qn%(a)
+        qs=qn/a
     if wn%b ==0 and wn!=0:
         w=b
+        ws=wn/b-1
     else:
         w=wn%b
+        ws=wn/b
 
     liq= copy.deepcopy(li)
     listToSend = []
@@ -77,10 +83,10 @@ def voda(qn,wn,li,o):
 
     #1 >a
     if nextStep and q!=a:
-        voda(a,w,listToSend,1)
+        voda(a+ a*qs,w+b*ws,listToSend,1)
     #2 >b
     if nextStep and w!=b:
-        voda(q,b,listToSend,2)
+        voda(q+a*qs,b+b*ws,listToSend,2)
     #3 a>b
     if q!=0 and w<b:
         toq = 0
@@ -94,7 +100,7 @@ def voda(qn,wn,li,o):
 
         if nextStep and (q+w)!=b:
             #print toq,tow
-            voda(toq,tow,listToSend,3)
+            voda(toq+a*qs,tow+b*ws,listToSend,3)
 
     #4 b>a
     if w!=0 and q<a:
@@ -107,13 +113,19 @@ def voda(qn,wn,li,o):
             toww = 0
             toqq = q+w
         if nextStep and (q+w)!=a:
-            voda(toqq,toww,listToSend,4)
+            voda(toqq+a*qs,toww+b*ws,listToSend,4)
     #5 a>
     if nextStep and q>0:
-        voda(0,w,listToSend,5)
+        voda(qs*a,w+b*ws,listToSend,5)
     #6 b>
     if nextStep and w>0:
-        voda(q,0,listToSend,6)
+        voda(q+a*qs,ws*b,listToSend,6)
+    #7 a>c
+    if nextStep and w>0:
+        voda(a*(qs+1),w+b*ws,listToSend,7)
+    #8 b>c
+    if nextStep and w>0:
+        voda(q+a*qs,(ws+1)*b,listToSend,8)
 
 voda(0,0,[[-1,-1]],0)
 
