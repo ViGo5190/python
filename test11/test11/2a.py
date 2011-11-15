@@ -24,9 +24,9 @@ else:
     bn = n
 
 qmatrix = []
-for i in xrange(0,an+1,1):
+for i in xrange(0,a+1,1):
     row = []
-    for j in xrange(0,bn+1,1):
+    for j in xrange(0,b+1,1):
         col= []
         row.append(col)
 
@@ -45,17 +45,26 @@ def showMatrix(qwe):
             #    print '0 |',
         print
 
+def showQQMatrix():
+    for ii in xrange(0, len(qqmatrix),1):
+        for i in xrange(0,a+1,1):
+            for jj in xrange(0,len(qqmatrix[0]),1):
+                for j in xrange(0,b+1,1):
+                    print len(qqmatrix[ii][jj][i][j]),' |',
+            print
 
 matrix = copy.deepcopy(qmatrix)
 qqmatrix = []
 
-for i in xrange(0, an/n,1):
+for i in xrange(0, (an/n)+1,1):
     itrow = []
-    for j in xrange(0,bn/n,1):
+    for j in xrange(0,(bn/n)+1,1):
         myline = []
         myline = copy.deepcopy(matrix)
         itrow.append(myline)
     qqmatrix.append(itrow)
+
+#showQQMatrix()
 
 def voda(q,qs,w,ws,li,o):
 
@@ -65,7 +74,7 @@ def voda(q,qs,w,ws,li,o):
     #ws=0
     qn=q+qs*a
     wn=w+ws*b
-    print q, qn,w, wn ,'li', o ,qs,ws
+    #print q, qn,w, wn ,li, o ,qs,ws
     #if qn%a == 0 and qn!=0:
     #    q=a
     #    qs=qn/a-1
@@ -82,16 +91,17 @@ def voda(q,qs,w,ws,li,o):
     liq= copy.deepcopy(li)
     listToSend = []
     nextStep =False
-    if len(matrix[qn][wn])==0:
+    if len(qqmatrix[qs][ws][q][w])==0:
         liq.append([q,w,o])
-        matrix[qn][wn] = copy.deepcopy(liq)
+        qqmatrix[qs][ws][q][w] = copy.deepcopy(liq)
         nextStep = True
-    elif len(matrix[qn][wn])>len(li):
+    elif len(qqmatrix[qs][ws][q][w])>len(li):
         liq.append([q,w,o])
-        matrix[qn][wn] = copy.deepcopy(liq)
+        qqmatrix[qs][ws][q][w] = copy.deepcopy(liq)
         nextStep = True
 
-    listToSend = copy.deepcopy(matrix[qn][wn])
+    listToSend = copy.deepcopy(qqmatrix[qs][ws][q][w])
+
 
     #1 >a
     if nextStep and q!=a :
@@ -133,10 +143,10 @@ def voda(q,qs,w,ws,li,o):
     if nextStep and w>0:
         voda(q,qs,0,ws,listToSend,6)
     #7 a>c
-    if nextStep and q>0 and ((qs+1)*a)<=an:
+    if nextStep and q>0 and ((qs+1)*a)<an:
         voda(0,qs+1,w,ws,listToSend,7)
     #8 b>c
-    if nextStep and w>0 and ((ws+1)*b)<=bn:
+    if nextStep and w>0 and ((ws+1)*b)<bn:
         voda(q,qs,0,(ws+1),listToSend,8)
 
 voda(0,0,0,0,[[-1,-1]],0)
@@ -144,18 +154,34 @@ voda(0,0,0,0,[[-1,-1]],0)
 flag=-1
 flagList=[]
 
-showMatrix(matrix)
 
-if n<=an:
-    for i in xrange(0,len(matrix[0]),1):
-        if (len(matrix[n][i])<flag or flag==-1) and len(matrix[n][i])!=0:
-            flag = len(matrix[n][i])
-            flagList = copy.deepcopy(matrix[n][i])
-if n<=bn:
-    for i in xrange(0,len(matrix),1):
-        if (len(matrix[i][n])<flag or flag==-1) and len(matrix[i][n])!=0:
-            flag = len(matrix[i][n])
-            flagList = copy.deepcopy(matrix[i][n])
+showQQMatrix()
+
+lastPrint =""
+
+if n<=an or n<=bn:
+    for ii in xrange(0,len(qqmatrix),1):
+        for jj in xrange(0,len(qqmatrix[0]),1):
+            for i in xrange(0, a+1,1):
+                for j in xrange(0,b+1,1):
+                    if (ii*a+jj*b+i)==n and len(qqmatrix[ii][jj][i][j])!=0 and (len(qqmatrix[ii][jj][i][j])<flag or flag==-1):
+                        flag = len(qqmatrix[ii][jj][i][j])
+                        flagList = copy.deepcopy(qqmatrix[ii][jj][i][j])
+                        lastPrint = "A>C"
+                    if (ii*a+jj*b+j)==n and len(qqmatrix[ii][jj][i][j])!=0 and (len(qqmatrix[ii][jj][i][j])<flag or flag==-1):
+                        flag = len(qqmatrix[ii][jj][i][j])
+                        flagList = copy.deepcopy(qqmatrix[ii][jj][i][j])
+                        lastPrint = "B>C"
+
+
+            
+#if n<=bn:
+#    for ii in xrange(0,len(qqmatrix),1):
+#        for jj in xrange(0,len(qqmatrix[0]),1):
+#            for i in xrange(0,len(qqmatrix[ii][jj]),1):
+#                if (len(qqmatrix[ii][jj][i][n%b])<flag or flag==-1) and len(qqmatrix[ii][jj][i][n%b])!=0:
+#                    flag = len(qqmatrix[ii][jj][i][n%b])
+#                    flagList = copy.deepcopy(qqmatrix[ii][jj][i][n%b])
 print flag
 print flagList
 if len(flagList)>2:
@@ -176,6 +202,7 @@ if len(flagList)>2:
             print 'A>C'
         if flagList[i][2] == 8:
             print 'B>C'
+    print lastPrint
 else:
     print 'Impossible'
 
