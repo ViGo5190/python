@@ -20,7 +20,6 @@ if n%b != 0:
     bn = (n/b +1)*b
 else:
     bn = n
-print an, bn
 
 
 qmatrix = []
@@ -127,7 +126,7 @@ flag=-1
 flagList=[]
 
 
-showQQMatrix()
+#showQQMatrix()
 
 lastPrint =""
 
@@ -148,8 +147,8 @@ if n<=an or n<=bn:
 
             
 
-print flag
-print flagList
+#print flag
+#print flagList
 if len(flagList)>2:
     for i in xrange(2,len(flagList),1):
         if flagList[i][2] == 1:
