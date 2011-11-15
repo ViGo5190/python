@@ -1,14 +1,12 @@
-
-
 __author__ = 'vigo@vigo.su'
 import copy
-#a = input("A=")
-#b = input("B=")
-#n = input("N=")
+a = input("A=")
+b = input("B=")
+n = input("N=")
 
-a=3
-b=5
-n=6
+#a=3
+#b=5
+#n=9
 
 an = 0
 bn = 0
@@ -22,6 +20,8 @@ if n%b != 0:
     bn = (n/b +1)*b
 else:
     bn = n
+print an, bn
+
 
 qmatrix = []
 for i in xrange(0,a+1,1):
@@ -56,9 +56,9 @@ def showQQMatrix():
 matrix = copy.deepcopy(qmatrix)
 qqmatrix = []
 
-for i in xrange(0, (an/n)+1,1):
+for i in xrange(0, (an/a)+1,1):
     itrow = []
-    for j in xrange(0,(bn/n)+1,1):
+    for j in xrange(0,(bn/b)+1,1):
         myline = []
         myline = copy.deepcopy(matrix)
         itrow.append(myline)
