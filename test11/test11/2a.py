@@ -33,18 +33,6 @@ for i in xrange(0,a+1,1):
 
     qmatrix.append(row)
 
-def showMatrix(qwe):
-    matrix = copy.deepcopy(qwe)
-    for i in xrange(0,len(matrix),1):
-        for j in xrange(0,len(matrix[i]),1):
-            #print matrix[i][j], '| ',
-            print len(matrix[i][j]),' |',
-            #if len(matrix[i][j])>0:
-            #    print '1 |',
-            #else:
-            #    print '0 |',
-        print
-
 def showQQMatrix():
     for ii in xrange(0, len(qqmatrix),1):
         for i in xrange(0,a+1,1):
@@ -64,29 +52,13 @@ for i in xrange(0, (an/a)+1,1):
         itrow.append(myline)
     qqmatrix.append(itrow)
 
-#showQQMatrix()
+
 
 def voda(q,qs,w,ws,li,o):
 
-    #q=0
-    #w=0
-    #qs=0
-    #ws=0
     qn=q+qs*a
     wn=w+ws*b
-    #print q, qn,w, wn ,li, o ,qs,ws
-    #if qn%a == 0 and qn!=0:
-    #    q=a
-    #    qs=qn/a-1
-    #else:
-    #    q=qn%(a)
-    #    qs=qn/a
-    #if wn%b ==0 and wn!=0:
-    #    w=b
-    #    ws=wn/b-1
-    #else:
-    #    w=wn%b
-    #    ws=wn/b
+
 
     liq= copy.deepcopy(li)
     listToSend = []
@@ -175,13 +147,7 @@ if n<=an or n<=bn:
 
 
             
-#if n<=bn:
-#    for ii in xrange(0,len(qqmatrix),1):
-#        for jj in xrange(0,len(qqmatrix[0]),1):
-#            for i in xrange(0,len(qqmatrix[ii][jj]),1):
-#                if (len(qqmatrix[ii][jj][i][n%b])<flag or flag==-1) and len(qqmatrix[ii][jj][i][n%b])!=0:
-#                    flag = len(qqmatrix[ii][jj][i][n%b])
-#                    flagList = copy.deepcopy(qqmatrix[ii][jj][i][n%b])
+
 print flag
 print flagList
 if len(flagList)>2:
