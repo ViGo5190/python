@@ -42,6 +42,8 @@ def load_data(G=nx.Graph()):
         ii = long(data[i])
         G.add_node(ii)
         
+        print i
+        #nx.draw_networkx_nodes( G,pos=[(1/(i+1),1/(i+1))],nodelist=G.nodes() )
         if i>0:
             iid = long(data[i/2])
             G.add_edge(iid,ii)
@@ -50,7 +52,10 @@ def load_data(G=nx.Graph()):
     #pos = {0:(1,1)}
 
     
-    pos=nx.spring_layout(G)
+    #pos=nx.spring_layout(G)
+    #H = nx.balanced_tree(2,2,G)
+
+    pos=nx.graphviz_layout(G,prog='dot',args='')
     #print pos
     nx.draw(G, pos, with_labels=True, node_color="blue", node_size=300)
 
@@ -66,7 +71,7 @@ def main():
     G = get_tree()
 
     nx.draw(G, with_labels=False, node_color="blue", alpha= 0.6, node_size=50)
-
+    #nx.draw_networkx_nodes(G,nodelist=(0))
     plt.savefig("edge_colormap.png")
 
     plt.show()
