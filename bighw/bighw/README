@@ -1,0 +1,8 @@
+Linux Mint 12
+
+Python 2.7
+
+
+sudo apt-get install python-matplotlib python-matplotlib-data 
+
+sudo apt-get install python-networkx
