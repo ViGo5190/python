@@ -20,14 +20,6 @@ def get_tree(tree=[u"/home/vigo/python/",], G=nx.Graph(), itr=0, max_itr=900):
     else:
         return G
 
-def is_hidden_dir(d):
-    import sys, subprocess
-    if sys.platform.startswith("win"):
-        p = subprocess.check_output(["attrib", d])
-        return True if 'H' in p[:12] else False
-    else:
-        return True if os.path.basename(d)[0] == '.' else False
-
 def search_midle():
     return 0
 
@@ -40,13 +32,15 @@ def load_data(G=nx.Graph()):
 
     for i in xrange(0,len(data)/2,1):
         ii = long(data[i])
-        G.add_node(ii)
+        G.add_node(i+1,attr_dict={'label':ii},label=ii)
         
         print i
         #nx.draw_networkx_nodes( G,pos=[(1/(i+1),1/(i+1))],nodelist=G.nodes() )
         if i>0:
-            iid = long(data[i/2])
-            G.add_edge(iid,ii)
+            #iid = long(data[i/2])
+            iid = (i+1)/2
+
+            G.add_edge(iid,i+1)
 
     
     #pos = {0:(1,1)}
@@ -55,7 +49,8 @@ def load_data(G=nx.Graph()):
     #pos=nx.spring_layout(G)
     #H = nx.balanced_tree(2,2,G)
 
-    pos=nx.graphviz_layout(G,prog='dot',args='')
+    #pos=nx.graphviz_layout(G,prog='dot',args='-x -y')
+    pos=nx.graphviz_layout(G,prog='dot',args='-x')
     #print pos
     nx.draw(G, pos, with_labels=True, node_color="blue", node_size=300)
 
