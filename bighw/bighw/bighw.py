@@ -20,41 +20,41 @@ import math
 #---------------------
 
 G=nx.Graph()
+F=nx.Graph()
 pic_n=0
-
+title1 = []
 
 
 def is2pow(xxk):
-    #print 'k=',xxk
-    #ii = math.log(xxk)
-    #ii /=math.log(2)
-    #ll = 2**ii
-    #return (xxk==ll)
+
     return (xxk==(2**int(math.log(xxk,2))))
 def low2pow(xxk):
     return int(math.log(xxk,2))
 
 
-
+def getTitle():
+    t = "Sequence: "
+    for i in xrange(0,len(G.nodes(data=True)),1):
+        t = t+" "+str(G.nodes(data=True)[i][1]['label'])
+    for i in xrange(0,len(title1),1):
+        t= t+" "+str(title1[i])
+    return t
 
 def print_pic(pic_q):
     labels=dict((n,str(d['label'])) for n,d in G.nodes(data=True))
     colors=dict((n,str(d['color'])) for n,d in G.nodes(data=True))
     pos2=dict((n,(d['x'],d['y'])) for n,d in G.nodes(data=True))
     pos=nx.graphviz_layout(G,prog='dot',args='-y')
-    #print labels
-    #print pos
-    #print '----'
-    #print pos2
-    
-    #print G.nodes(data=True)[1][1]['x']
+
     plt.cla()
+
     nx.draw(G, pos2, with_labels=True,labels=labels, node_color="red", node_size=600)
 
-    plt.savefig("zzzedge_colormap"+str(pic_q).rjust(3,"0")+".png")
+    plt.title(getTitle())
+    plt.savefig("zzzedge_"+str(pic_q).rjust(3,"0")+".png")
     
 
-    #plt.show()
+
     pic_q+=1
     return pic_q
     
@@ -95,7 +95,7 @@ def load_data():
         ii = long(data[i])
 
         
-        print i+1,ii,
+        #print i+1,ii,
         iid = 1
         parentx = 0;
         #nx.draw_networkx_nodes( G,pos=[(1/(i+1),1/(i+1))],nodelist=G.nodes() )
@@ -103,66 +103,50 @@ def load_data():
             if i>2:
                 iid = long((i+1)/2)
                 parentx = float(G.nodes(data=True)[iid-1][1]['x'])
-                print ">",parentx,"<",float(G.nodes(data=True)[iid-1][1]['z']),
+                #print ">",parentx,"<",float(G.nodes(data=True)[iid-1][1]['z']),
             else:
                 iid = 1
                 parentx = 0
 
-            #iid = low2pow(i+1)
-            #if i< (2**(low2pow(i+1)+1)/2):
-            #    print i,"-"
-            #    znak = -1
-            #else:
-            #    print i,"+"
-            znak*=-1
-            print "parent=",iid,
 
-            #print G.nodes(data=True)[iid][1]['x']
-            #myxx = 1.0/+znak*myx;
+            znak*=-1
+            #print "parent=",iid,
+
+
 
 
 
         if i>0:
-            #G.add_node(i+1,label=ii,x=float((parentx + ((some-low2pow(i))*znak* (1.0/(low2pow(i+1)+1)) )   )),y=-1*low2pow(i+1),z=znak)
+
             G.add_node(i+1,label=ii,x=float((parentx  + 100*((some-low2pow(i))*znak* (1.0/(low2pow(i+2))) )   )),y=-1*low2pow(i+1),z=znak,color="blue")
             G.add_edge(iid,i+1)
             pic_n = print_pic(pic_n)
-            #if int(G.nodes(data=True)[i][1]['label']) > int(G.nodes(data=True)[iid-1][1]['label']):
-                #lastlbl = G.nodes(data=True)[i][1]['label']
-                #G.nodes(data=True)[i][1]['label'] = G.nodes(data=True)[iid-1][1]['label']
-                #G.nodes(data=True)[iid-1][1]['label'] = lastlbl
-                ##swap(G.nodes(data=True)[i][1]['label'],G.nodes(data=True)[iid-1][1]['label'])
-            #    G.nodes(data=True)[i][1]['label'],G.nodes(data=True)[iid-1][1]['label'] = G.nodes(data=True)[iid-1][1]['label'], G.nodes(data=True)[i][1]['label']
-            #    pic_n = print_pic(pic_n)
+
             pic_n = checkParent(i,pic_n)
         else:
             G.add_node(i+1,label=ii,x=0-some,y=0,z=znak,color="blue")
             pic_n = print_pic(pic_n)
 
-        for i in xrange (0,len(G.nodes(data=True)),1):
-            print G.nodes(data=True)[i][1]['label'],
-        print ";"
-        print '----------------------------------------------------------',G.nodes(data=True)[i][1]['label']
+        #for i in xrange (0,len(G.nodes(data=True)),1):
+        #    print G.nodes(data=True)[i][1]['label'],
+        #print ";"
+        #print '----------------------------------------------------------',G.nodes(data=True)[i][1]['label']
 
 
 
         k=int(i)
         if is2pow(i+1):
             yy/=2
-        print
+        #print
 
     return pic_n
 
     
-    #pic_n = print_pic(pic_n)
-    #labels=dict((n,str(d['z'])+" "+str(d['label'])+"  "+str(d['x'])+"  "+str(d['y'])) for n,d in G.nodes(data=True))
 
 
-
-
-#def make_tree(G=nx.Graph()):
-#    return 0
-
+def myRemoveNode(i):
+    G.remove_node(leng+1)
+    #F.add_node()
 
 
 def moveDown(i,x_n):
@@ -207,9 +191,9 @@ if __name__ == '__main__':
     start = (len(G.nodes(data=True))-2)/2
     leng = len(G.nodes(data=True))
     #print G.edges(data=True)
-    for i in xrange (0,leng,1):
-        print G.nodes(data=True)[i][1]['label'],
-    print ";"
+    #for i in xrange (0,leng,1):
+    #    print G.nodes(data=True)[i][1]['label'],
+    #print ";"
     while leng>0:
         G.nodes(data=True)[0][1]['label'],G.nodes(data=True)[leng-1][1]['label'] = G.nodes(data=True)[leng-1][1]['label'], G.nodes(data=True)[0][1]['label']
 
@@ -220,10 +204,11 @@ if __name__ == '__main__':
 
 
         leng-=1
-        #print leng, iid, "!",
-        #print "remove", leng+1
+
         print  G.nodes(data=True)[leng][1]['label'],
-        G.remove_node(leng+1)
+        title1.append(G.nodes(data=True)[leng][1]['label'])
+    
+        myRemoveNode(leng+1)
         pic_n = print_pic(pic_n)
 
         if leng>1:
