@@ -74,9 +74,11 @@ def checkParent(i,x_n):
         x_newn = print_pic(x_n)
     else:
         x_newn = x_n
+
         
     if i>1:
-        return checkParent(iid, x_newn)
+        return checkParent(iid-1, x_newn)
+
     else:
         return x_newn
 
@@ -95,22 +97,22 @@ def load_data():
         ii = long(data[i])
 
         
-        #print i+1,ii,
+
         iid = 1
         parentx = 0;
-        #nx.draw_networkx_nodes( G,pos=[(1/(i+1),1/(i+1))],nodelist=G.nodes() )
+
         if i>0:
             if i>2:
                 iid = long((i+1)/2)
                 parentx = float(G.nodes(data=True)[iid-1][1]['x'])
-                #print ">",parentx,"<",float(G.nodes(data=True)[iid-1][1]['z']),
+
             else:
                 iid = 1
                 parentx = 0
 
 
             znak*=-1
-            #print "parent=",iid,
+
 
 
 
@@ -127,17 +129,14 @@ def load_data():
             G.add_node(i+1,label=ii,x=0-some,y=0,z=znak,color="blue")
             pic_n = print_pic(pic_n)
 
-        #for i in xrange (0,len(G.nodes(data=True)),1):
-        #    print G.nodes(data=True)[i][1]['label'],
-        #print ";"
-        #print '----------------------------------------------------------',G.nodes(data=True)[i][1]['label']
+
 
 
 
         k=int(i)
         if is2pow(i+1):
             yy/=2
-        #print
+
 
     return pic_n
 
@@ -152,7 +151,7 @@ def myRemoveNode(i):
 def moveDown(i,x_n):
     x_new = x_n
     if i*2+2<len(G.nodes(data=True)):
-        if (int(G.nodes(data=True)[i][1]['label']) < int(G.nodes(data=True)[i*2+1][1]['label'])) or (int(G.nodes(data=True)[i][1]['label']) < int(G.nodes(data=True)[i*2+2][1]['label'])):
+        if (int(G.nodes(data=True)[i][1]['label']) <= int(G.nodes(data=True)[i*2+1][1]['label'])) or (int(G.nodes(data=True)[i][1]['label']) <= int(G.nodes(data=True)[i*2+2][1]['label'])):
 
 
             if int(G.nodes(data=True)[i*2+1][1]['label']) > int(G.nodes(data=True)[i*2+2][1]['label']):
@@ -190,10 +189,7 @@ if __name__ == '__main__':
     pic_n = load_data()
     start = (len(G.nodes(data=True))-2)/2
     leng = len(G.nodes(data=True))
-    #print G.edges(data=True)
-    #for i in xrange (0,leng,1):
-    #    print G.nodes(data=True)[i][1]['label'],
-    #print ";"
+
     while leng>0:
         G.nodes(data=True)[0][1]['label'],G.nodes(data=True)[leng-1][1]['label'] = G.nodes(data=True)[leng-1][1]['label'], G.nodes(data=True)[0][1]['label']
 
